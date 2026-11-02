@@ -1042,21 +1042,26 @@ function HomePage() {
           <div className="insights-intro">
             <p className="eyebrow">LEGAL INSIGHTS</p>
             <h2>Knowledge That Empowers</h2>
+            <p className="insights-description">
+              Clear, practical perspectives to help you make confident decisions at every turn.
+            </p>
             <Link className="text-link desktop-only-link" to="/insights">
               View All Insights <ArrowRight size={14} />
             </Link>
           </div>
           <div className="insights-grid">
-            {articles.map((article) => (
+            {articles.map((article, index) => (
               <Link className="article-card" to={`/insights/${article.slug}`} key={article.slug}>
                 <span className="article-image">
                   <img src={article.image} alt={article.title} loading="lazy" />
+                  <span className="article-category">{article.category}</span>
+                  <span className="article-number">{String(index + 1).padStart(2, "0")}</span>
                 </span>
                 <div className="article-body">
                   <span className="article-date">{article.date}</span>
                   <h3 className="article-title">{article.title}</h3>
-                  <span className="article-circle-arrow" aria-hidden="true">
-                    <ArrowRight size={13} />
+                  <span className="article-read-link">
+                    Read the insight <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>
