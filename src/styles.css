@@ -1062,11 +1062,11 @@ img {
 
 .hero-photo-layer {
   position: absolute;
-  inset: 0 0 0 32%;
-  background-position: center 25%;
+  inset: 0 0 0 22%;
+  background-position: 100% center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: brightness(0.92) contrast(1.05);
+  filter: brightness(1.1) contrast(1.08) saturate(1.02);
 }
 
 .hero-overlay-shade {
@@ -1075,23 +1075,25 @@ img {
   background: linear-gradient(
     90deg,
     #0d141e 0%,
-    #0d141e 32%,
-    rgba(13, 20, 30, 0.94) 48%,
-    rgba(13, 20, 30, 0.52) 70%,
-    rgba(13, 20, 30, 0.25) 100%
+    rgba(13, 20, 30, 0.98) 24%,
+    rgba(13, 20, 30, 0.86) 39%,
+    rgba(13, 20, 30, 0.45) 55%,
+    rgba(13, 20, 30, 0.04) 76%,
+    transparent 100%
   ),
   linear-gradient(
     0deg,
-    #0d141e 0%,
-    transparent 18%,
-    transparent 82%,
-    rgba(13, 20, 30, 0.6) 100%
+    rgba(13, 20, 30, 0.42) 0%,
+    transparent 28%,
+    transparent 78%,
+    rgba(13, 20, 30, 0.16) 100%
   );
 }
 
 .hero-elements-layer {
   position: absolute;
-  top: 42px;
+  top: auto;
+  bottom: 34px;
   right: clamp(24px, 5vw, 68px);
   z-index: 2;
   pointer-events: none;
@@ -2306,6 +2308,22 @@ img {
   isolation: isolate;
 }
 
+.page-hero-attorneys {
+  display: flex;
+  align-items: center;
+  min-height: 280px;
+  background-position: center top;
+}
+
+.page-hero-attorneys .page-hero-inner {
+  max-width: 520px;
+  margin-inline: clamp(16px, calc((100% - 1088px) / 2), 80px) auto;
+}
+
+.page-hero.page-hero-attorneys::before {
+  background: linear-gradient(90deg, rgba(13, 20, 30, 0.94) 0%, rgba(13, 20, 30, 0.82) 38%, rgba(13, 20, 30, 0.45) 62%, rgba(13, 20, 30, 0.16) 100%);
+}
+
 .page-hero::before {
   content: "";
   position: absolute;
@@ -2593,6 +2611,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 60% center;
 }
 
 .attorney-bio {
@@ -2765,15 +2784,22 @@ img {
 
 @media (max-width: 992px) {
   .hero-photo-layer {
-    inset: 0 0 0 15%;
-    opacity: 0.65;
+    inset: 0 0 0 5%;
+    opacity: 0.78;
   }
   .hero-overlay-shade {
     background: linear-gradient(
       90deg,
       #0d141e 0%,
-      rgba(13, 20, 30, 0.96) 60%,
-      rgba(13, 20, 30, 0.7) 100%
+      rgba(13, 20, 30, 0.96) 35%,
+      rgba(13, 20, 30, 0.7) 58%,
+      rgba(13, 20, 30, 0.28) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(13, 20, 30, 0.82) 0%,
+      transparent 42%,
+      rgba(13, 20, 30, 0.28) 100%
     );
   }
   .about-section {
@@ -2827,6 +2853,9 @@ img {
   }
   .site-header {
     position: relative;
+  }
+  .hero-elements-layer {
+    display: none;
   }
   .nav-shell {
     width: calc(100% - 32px);

@@ -1096,9 +1096,9 @@ function HomePage() {
   );
 }
 
-function PageHero({ eyebrow, title, description, image, compact = false }) {
+function PageHero({ eyebrow, title, description, image, compact = false, className = "" }) {
   return (
-    <section className={`page-hero ${compact ? "page-hero-compact" : ""}`} style={image ? { "--page-hero-image": `url("${image}")` } : undefined}>
+    <section className={`page-hero ${compact ? "page-hero-compact" : ""} ${className}`.trim()} style={image ? { "--page-hero-image": `url("${image}")` } : undefined}>
       <div className="page-width page-hero-inner">
         <p className="eyebrow eyebrow-light">{eyebrow}</p>
         <h1>{title}</h1>
@@ -1257,6 +1257,7 @@ function AttorneysPage() {
         title="Meet Our Attorneys"
         description="Experienced advocates committed to upholding justice and delivering measurable results."
         image={photos.hero}
+        className="page-hero-attorneys"
       />
       <section className="interior-section page-width">
         <div className="attorneys-grid">
