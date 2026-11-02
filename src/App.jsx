@@ -124,28 +124,28 @@ const practices = [
 const matters = [
   {
     slug: "personal-injury-settlement",
-    amount: "$2.5M",
+    amount: "₹20.8 Cr",
     title: "Personal Injury Settlement",
     subtitle: "Car accident case",
     image: photos.caseInjury,
   },
   {
     slug: "child-custody-victory",
-    amount: "$850K",
+    amount: "₹7.1 Cr",
     title: "Child Custody Victory",
     subtitle: "Favorable custody agreement",
     image: photos.caseFamily,
   },
   {
     slug: "business-dispute-resolution",
-    amount: "$1.2M",
+    amount: "₹10 Cr",
     title: "Business Dispute Resolution",
     subtitle: "Contract dispute settled",
     image: photos.caseBusiness,
   },
   {
     slug: "real-estate-dispute",
-    amount: "$3.1M",
+    amount: "₹25.7 Cr",
     title: "Real Estate Dispute",
     subtitle: "Property ownership case",
     image: photos.caseProperty,
@@ -995,16 +995,18 @@ function HomePage() {
           <div className="results-intro">
             <p className="eyebrow">FEATURED CASE RESULTS</p>
             <h2>Proven Results for Our Clients</h2>
+            <p className="results-note">Amounts shown as approximate INR equivalents.</p>
           </div>
           <div className="results-content">
             <Link className="text-link results-link" to="/case-results">
               View All Case Results <ArrowRight size={14} />
             </Link>
             <div className="case-grid">
-              {matters.map((matter) => (
+              {matters.map((matter, index) => (
                 <Link className="case-card" key={matter.slug} to={`/case-results/${matter.slug}`}>
                   <span className="case-image">
                     <img src={matter.image} alt={matter.title} loading="lazy" />
+                    <span className="case-index">CASE {String(index + 1).padStart(2, "0")}</span>
                   </span>
                   <span className="case-info">
                     <strong className="case-amount">{matter.amount}</strong>
@@ -1026,7 +1028,6 @@ function HomePage() {
         <div className="page-width testimonial-layout">
           <div className="testimonial-intro">
             <p className="eyebrow">WHAT OUR CLIENTS SAY</p>
-            <h2>Trusted by Individuals and Businesses</h2>
           </div>
           <div className="testimonial-cards-row">
             {testimonials.map((item, index) => (
