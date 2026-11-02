@@ -25,7 +25,6 @@ import {
   Shield,
   ShieldCheck,
   Sparkles,
-  Star,
   Twitter,
   X,
 } from "lucide-react";
@@ -59,9 +58,11 @@ const photos = {
   articleAccident: "/images/blog-courtroom.jpg",
   articleEstate: "/images/legal-books.jpg",
   articleContracts: "/images/blog-contract-signing.jpg",
-  clientRohan: "/images/testimonial-client-male.jpg",
-  clientPriya: "/images/testimonial-client-female.jpg",
-  clientAmit: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=85",
+  team1: "/images/team-1.jpg",
+  team2: "/images/team-2.jpg",
+  team3: "/images/team-3.jpg",
+  team4: "/images/team-4.jpg",
+  team5: "/images/team-5.jpg",
 };
 
 const practices = [
@@ -152,6 +153,14 @@ const matters = [
   },
 ];
 
+const teamMembers = [
+  { name: "Team Member 01", designation: "Advocate", image: photos.team1 },
+  { name: "Team Member 02", designation: "Advocate", image: photos.team2 },
+  { name: "Team Member 03", designation: "Advocate", image: photos.team3 },
+  { name: "Team Member 04", designation: "Advocate", image: photos.team4 },
+  { name: "Team Member 05", designation: "Advocate", image: photos.team5 },
+];
+
 const articles = [
   {
     slug: "after-a-car-accident",
@@ -191,30 +200,6 @@ const articles = [
       "Specify dispute resolution venues and governing law jurisdictions.",
       "Ensure clear milestones, breach remedies, and termination protocols.",
     ],
-  },
-];
-
-const testimonials = [
-  {
-    quote: "Professional, knowledgeable and truly supportive throughout my case. Highly recommended!",
-    name: "Rohan Malhotra",
-    service: "Personal Injury Client",
-    photo: photos.clientRohan,
-    rating: 5,
-  },
-  {
-    quote: "They made a stressful process so much easier. Clear communication and exceptional service.",
-    name: "Priya Sharma",
-    service: "Family Law Client",
-    photo: photos.clientPriya,
-    rating: 5,
-  },
-  {
-    quote: "A very professional team that delivers results. I highly recommend Rivera & Co. for business legal matters.",
-    name: "Amit Kapoor",
-    service: "Business Owner",
-    photo: photos.clientAmit,
-    rating: 5,
   },
 ];
 
@@ -765,7 +750,7 @@ function Footer() {
           <h3>Resources</h3>
           <Link to="/insights">Articles</Link>
           <Link to="/resources">FAQs</Link>
-          <Link to="/#testimonials">Client Testimonials</Link>
+          <Link to="/#team">Meet Our Team</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>
         </div>
@@ -1023,27 +1008,27 @@ function HomePage() {
         </div>
       </section>
 
-      {/* WHAT OUR CLIENTS SAY */}
-      <section className="testimonials-section section-pad" id="testimonials">
-        <div className="page-width testimonial-layout">
-          <div className="testimonial-intro">
-            <p className="eyebrow">WHAT OUR CLIENTS SAY</p>
+      {/* OUR TEAM */}
+      <section className="team-section section-pad" id="team">
+        <div className="page-width">
+          <div className="team-heading">
+            <div>
+              <p className="eyebrow">OUR TEAM</p>
+              <h2>The People Behind Your Advocate</h2>
+            </div>
+            <Link className="text-link" to="/attorneys">
+              Meet the Full Team <ArrowRight size={14} />
+            </Link>
           </div>
-          <div className="testimonial-cards-row">
-            {testimonials.map((item, index) => (
-              <article className="testimonial-card" key={index}>
-                <p className="testimonial-quote">“{item.quote}”</p>
-                <div className="testimonial-author">
-                  <img className="avatar-img" src={item.photo} alt={item.name} />
-                  <div className="author-details">
-                    <strong>{item.name}</strong>
-                    <small>{item.service}</small>
-                    <div className="star-rating" aria-label="5 stars rating">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={11} fill="#e5a93c" stroke="#e5a93c" />
-                      ))}
-                    </div>
-                  </div>
+          <div className="team-grid">
+            {teamMembers.map((member) => (
+              <article className="team-card" key={member.image}>
+                <div className="team-photo">
+                  <img src={member.image} alt={member.name} loading="lazy" />
+                </div>
+                <div className="team-card-info">
+                  <p className="team-designation">{member.designation}</p>
+                  <h3>{member.name}</h3>
                 </div>
               </article>
             ))}
@@ -1285,6 +1270,29 @@ function AttorneysPage() {
                 <a href="mailto:c.rivera@riveralegal.com"><Mail size={14} /> c.rivera@riveralegal.com</a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="team-section attorneys-team-section section-pad">
+        <div className="page-width">
+          <div className="team-heading">
+            <div>
+              <p className="eyebrow">OUR TEAM</p>
+              <h2>Meet the Advocates</h2>
+            </div>
+          </div>
+          <div className="team-grid">
+            {teamMembers.map((member) => (
+              <article className="team-card" key={member.image}>
+                <div className="team-photo">
+                  <img src={member.image} alt={member.name} loading="lazy" />
+                </div>
+                <div className="team-card-info">
+                  <p className="team-designation">{member.designation}</p>
+                  <h3>{member.name}</h3>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

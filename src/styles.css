@@ -1854,82 +1854,91 @@ img {
 }
 
 /* ==========================================================================
-   TESTIMONIALS SECTION
+   TEAM SHOWCASE
    ========================================================================== */
-.testimonials-section {
+.team-section {
   background: #f4efe9;
 }
 
-.testimonial-layout {
+.team-heading {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
 }
 
-.testimonial-cards-row {
+.team-heading h2 {
+  max-width: 18ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.2vw, 42px);
+  line-height: 1.12;
+}
+
+.team-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
 }
 
-.testimonial-card {
-  min-height: 205px;
-  padding: 24px 22px;
+.team-card {
+  min-width: 0;
   background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 18px;
+  border-radius: 7px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.testimonial-quote {
-  margin: 0;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #4a4742;
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(17, 21, 28, 0.12);
 }
 
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line-light);
+.team-photo {
+  aspect-ratio: 1 / 1.05;
+  overflow: hidden;
 }
 
-.avatar-img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+.team-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid var(--gold-light);
+  object-position: center 32%;
+  transition: transform 0.45s ease;
 }
 
-.author-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.team-card:hover .team-photo img {
+  transform: scale(1.04);
 }
 
-.author-details strong {
-  font-size: 13.5px;
+.team-card-info {
+  padding: 15px 16px 18px;
+}
+
+.team-designation {
+  margin: 0 0 5px;
+  color: var(--gold-dark);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.team-card-info h3 {
+  margin: 0;
   color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.2;
 }
 
-.author-details small {
-  font-size: 11.5px;
-  color: var(--muted);
-}
-
-.star-rating {
-  display: flex;
-  gap: 3px;
-  margin-top: 3px;
+.attorneys-team-section {
+  padding-top: 40px;
 }
 
 /* ==========================================================================
@@ -2661,6 +2670,9 @@ img {
   .practice-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .case-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2698,17 +2710,18 @@ img {
     border-top: 1px solid var(--line);
   }
   .results-layout,
-  .testimonial-layout,
   .insights-layout,
   .detail-layout,
   .contact-layout {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .testimonial-cards-row,
   .insights-grid,
   .practice-detail-grid {
     grid-template-columns: 1fr;
+  }
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .attorneys-grid {
     grid-template-columns: 1fr;
@@ -2815,6 +2828,21 @@ img {
   }
   .case-info {
     min-height: 132px;
+  }
+  .team-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .team-grid {
+    gap: 12px;
+  }
+  .team-card-info {
+    padding: 13px 12px 15px;
+  }
+  .team-designation {
+    font-size: 9px;
   }
   .case-directory {
     grid-template-columns: 1fr;
